@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>INPUT DATA KE SPREAD SHEET</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /*  */
+    body {
+      background-color: #0c0a0a;
+    }
+    #form-container {
+      width: 500px;
+      margin: 0 auto;
+      background-color: #f1f1f7;
+      border: 2px solid #da0808;
+      border-radius: 10px;
+      padding: 20px;
+    }
+    #form-container h2 {
+      text-align: center;
+      color: #1E90FF;
+    }
+    #form-container input[type="text"], #form-container input[type="date"], #form-container input[type="tel"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 2px solid #f1d0d0;
+      border-radius: 5px;
+    }
+    #form-container input[type="submit"] {
+      background-color: #1E90FF;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      cursor: pointer;
+    }
+    #form-container input[type="submit"]:hover {
+      background-color: #004B8D;
+    }
+    #footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 12px;
+      color: #f7f1f1;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="form-container">
+    <h2>INPUT DATA KE SPREAD SHEET</h2>
+    <!-- akses link script app -->
+    <form action="https://script.google.com/macros/s/AKfycbyRxO-f52S-XVcW97ny4PQW5FqMsLjbAT-qY-W-UPReSGQpXtyVUEttAiNWRMPkWn9D5w/exec" method="post" enctype="multipart/form-data">
+    <!-- end akses  -->
+     <label for="no">Nomor</label>
+     <input type="number" id="no" name="no" required>
+      </br></br>
+
+        <label for="nama">Nama Kegiatan:</label>
+      <input type="text" id="nama" name="nama" required>
+      <label for="jenis">Pilih Jenis Kegiatan:</label>
+        <select name="jenis" id="jenis"  required>
+    <option></option>
+        <option value="kbm">KBM </option> 
+        <option value="nonkbm">Non KBM</option> 
+    </select>
+     <br>
+     <br>
+      <label for="tgl_kgt">Tanggal kegiatan:</label>
+      <input type="date" id="tgl_kgt" name="tgl_kgt" required>
+      <br>
+      <label for="uraian">Uraian Kegiatan:</label>
+     </br>
+      <textarea cols="60" rows="10" type="text" id="uraian" name="uraian" required></textarea></br>
+     </br>
+     </br>
+<label for="target">Target Capaian:</label>
+ <textarea cols="60" rows="10" type="text" id="target" name="target" required></textarea></br></br>
+<label for="target">Foto:</label><br>
+ <input type="file" id="foto" name="foto" accept="image/*"><br><br>
+
+ <div class="">
+    <video autoplay="true" id="video-webcam">
+        Izinkan untuk Mengakses Webcam untuk Demo
+    </video>
+    <button onclick="takeSnapshot()">Ambil Gambar</button>
+</div>
+<script>
+    var video = document.querySelector("#video-webcam");
+
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+
+    if (navigator.getUserMedia) {
+        navigator.getUserMedia({ video: true }, handleVideo, videoError);
+    }
+
+    function handleVideo(stream) {
+        video.srcObject = stream;
+    }
+
+    function videoError(e) {
+        // do something
+        alert("Izinkan menggunakan webcam untuk demo!")
+    }
+
+    function takeSnapshot() {
+        var img = document.createElement('img');
+        var context;
+        var width = video.offsetWidth
+                , height = video.offsetHeight;
+
+        canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+
+        context = canvas.getContext('2d');
+        context.drawImage(video, 0, 0, width, height);
+
+        img.src = canvas.toDataURL('image/png');
+        document.body.appendChild(img);
+    }
+
+</script>
+
+</script>
+<input type="submit" value="Simpan Data">
+    </body>
+</html>
